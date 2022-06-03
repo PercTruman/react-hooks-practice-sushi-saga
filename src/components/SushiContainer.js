@@ -5,16 +5,15 @@ import Sushi from "./Sushi";
 function SushiContainer({ sushiList, mealCount, setMealCount}) {
  const meal = 4 * mealCount
 
-  const sushiSet = sushiList.map((sushi) => (
-    sushi.id <= meal ?
+  const sushiSet = sushiList.filter((sushi) => sushi.id<=meal && sushi.id>meal - 4)
+  const filteredList= sushiSet.map(dish=>
     <Sushi
-      key={sushi.id}
-      name={sushi.name}
-      price={sushi.price}
-      image={sushi.img_url}
+      key={dish.id}
+      name={dish.name}
+      price={dish.price}
+      image={dish.img_url}
     />
-    : ''
-  ))
+  )
 
   
  
@@ -22,7 +21,7 @@ function SushiContainer({ sushiList, mealCount, setMealCount}) {
 
   return (
     <div className="belt">
-      {sushiSet}
+      {filteredList}
       <MoreButton mealCount={mealCount} setMealCount={setMealCount} />
     </div>
   );

@@ -1,11 +1,11 @@
 import React from "react";
 
-function MoreButton({mealCount, setMealCount }) {
+function MoreButton({ setMealCount }) {
 
   function handleClick() {
    setMealCount(mealCount=>mealCount + 1)
   }
-  console.log(mealCount)
+
   return <button onClick={handleClick}>More sushi!</button>;
 }
 
