@@ -1,15 +1,29 @@
 import React from "react";
 import MoreButton from "./MoreButton";
-import Sushi from "./Sushi"
+import Sushi from "./Sushi";
 
-function SushiContainer({sushi}) {
-  const sushiSet =  sushi.map(item=>
-    <Sushi key={item.id} name={item.name} price={item.price} image={item.img_url}/>)
+function SushiContainer({ sushiList, mealCount, setMealCount}) {
+ const meal = 4 * mealCount
+
+  const sushiSet = sushiList.map((sushi) => (
+    sushi.id <= meal ?
+    <Sushi
+      key={sushi.id}
+      name={sushi.name}
+      price={sushi.price}
+      image={sushi.img_url}
+    />
+    : ''
+  ))
+
   
+ 
+ 
+
   return (
     <div className="belt">
       {sushiSet}
-      <MoreButton />
+      <MoreButton mealCount={mealCount} setMealCount={setMealCount} />
     </div>
   );
 }
