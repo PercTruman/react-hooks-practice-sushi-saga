@@ -2,7 +2,7 @@ import React from "react";
 import MoreButton from "./MoreButton";
 import Sushi from "./Sushi";
 
-function SushiContainer({ sushiList, mealCount, setMealCount }) {
+function SushiContainer({ sushiList, mealCount, setMealCount, addPlate }) {
   const meal = 4 * mealCount;
 
   const sushiSet = sushiList.filter(
@@ -16,6 +16,7 @@ function SushiContainer({ sushiList, mealCount, setMealCount }) {
         name={dish.name}
         price={dish.price}
         image={dish.img_url}
+        addPlate={addPlate}
       />
   );
   return (

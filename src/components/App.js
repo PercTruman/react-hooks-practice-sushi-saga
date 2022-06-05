@@ -5,6 +5,7 @@ import Table from "./Table";
 function App() {
   const [sushiList, setSushiList] = useState([]);
   const [mealCount, setMealCount] = useState(1);
+  const [plates, setPlates]=useState([])
   
 
   useEffect(() => {
@@ -12,6 +13,10 @@ function App() {
       .then((res) => res.json())
       .then((sushiList) => setSushiList(sushiList));
   }, []);
+
+  function addPlate(newPlate){
+    setPlates(plates=>[...plates, newPlate])
+  }
 
 
 
@@ -22,8 +27,9 @@ function App() {
         setSushiList={setSushiList}
         mealCount={mealCount}
         setMealCount={setMealCount}
+        addPlate={addPlate}
       />
-      <Table />
+      <Table plates={plates}/>
     </div>
   );  
 }
