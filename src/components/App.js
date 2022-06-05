@@ -4,8 +4,8 @@ import Table from "./Table";
 
 function App() {
   const [sushiList, setSushiList] = useState([]);
-
- const [mealCount, setMealCount] = useState(1)
+  const [mealCount, setMealCount] = useState(1);
+  
 
   useEffect(() => {
     fetch("http://localhost:3001/sushis?")
@@ -13,13 +13,19 @@ function App() {
       .then((sushiList) => setSushiList(sushiList));
   }, []);
 
- 
+
+
   return (
     <div className="app">
-      <SushiContainer sushiList={sushiList} mealCount={mealCount} setMealCount={setMealCount} />
+      <SushiContainer
+        sushiList={sushiList}
+        setSushiList={setSushiList}
+        mealCount={mealCount}
+        setMealCount={setMealCount}
+      />
       <Table />
     </div>
-  );
+  );  
 }
 
 export default App;
