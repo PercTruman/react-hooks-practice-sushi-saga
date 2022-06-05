@@ -5,25 +5,22 @@ import Table from "./Table";
 function App() {
   const [sushiList, setSushiList] = useState([]);
   const [mealCount, setMealCount] = useState(1);
-  const [plates, setPlates]=useState([])
-  const [money, setMoney]=useState(50)
-  
+  const [plates, setPlates] = useState([]);
+  const [money, setMoney] = useState(50);
 
   useEffect(() => {
-    fetch("http://localhost:3001/sushis?")
+    fetch("http://localhost:3001/sushis")
       .then((res) => res.json())
       .then((sushiList) => setSushiList(sushiList));
   }, []);
 
-  function addPlate(newPlate){
-    setPlates(plates=>[...plates, newPlate])
+  function addPlate(newPlate) {
+    setPlates((plates) => [...plates, newPlate]);
   }
 
-  function payBill(bill){
-    setMoney(money=>money - bill)
+  function payBill(bill) {
+    setMoney((money) => money - bill);
   }
-
-
 
   return (
     <div className="app">
@@ -34,10 +31,11 @@ function App() {
         setMealCount={setMealCount}
         addPlate={addPlate}
         payBill={payBill}
+        money={money}
       />
       <Table plates={plates} money={money} />
     </div>
-  );  
+  );
 }
 
 export default App;
