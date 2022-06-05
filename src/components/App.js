@@ -6,6 +6,7 @@ function App() {
   const [sushiList, setSushiList] = useState([]);
   const [mealCount, setMealCount] = useState(1);
   const [plates, setPlates]=useState([])
+  const [money, setMoney]=useState(50)
   
 
   useEffect(() => {
@@ -18,6 +19,10 @@ function App() {
     setPlates(plates=>[...plates, newPlate])
   }
 
+  function payBill(bill){
+    setMoney(money=>money - bill)
+  }
+
 
 
   return (
@@ -28,8 +33,9 @@ function App() {
         mealCount={mealCount}
         setMealCount={setMealCount}
         addPlate={addPlate}
+        payBill={payBill}
       />
-      <Table plates={plates}/>
+      <Table plates={plates} money={money} />
     </div>
   );  
 }
